@@ -16,14 +16,15 @@ import Link from 'next/link'
 
 
 const formSchema=z.object({
-  name:z.string(),
-  email:z.string().email(),
+  name:z.string().min(2 ,{message:'Name must be 2 characters'}),
+  email:z.string().email({message: 'Email is required'}),
   password:z.string().min(8 ,{
     message:'Password must be 8 characters'
   }),
 })
 
 const Register=()=>{
+
   const form=useForm({
     resolver:zodResolver(formSchema),
     defaultValues:{
@@ -61,6 +62,7 @@ const Register=()=>{
         <FormField
           control={form.control}
           name="email"
+          
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -78,7 +80,7 @@ const Register=()=>{
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="**********" {...field} />
+                <Input placeholder="**********" {...field}  />
               </FormControl>
               <FormMessage />
             </FormItem>
