@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useState } from 'react'
 
 
 
@@ -23,6 +24,7 @@ const formSchema=z.object({
   }),
 })
 const RegisterForm=()=>{
+    const [isLoading , setLoading]=useState(false)
     const form=useForm({
         resolver:zodResolver(formSchema),
         defaultValues:{
@@ -79,7 +81,7 @@ const RegisterForm=()=>{
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className='w-full font-bold '>Register</Button>
       </form>
     </Form>
         </>

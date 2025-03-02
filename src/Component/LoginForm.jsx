@@ -63,7 +63,7 @@ const LoginForm=()=>{
             </FormItem>
           )}
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit" className='w-full font-bold'>Login</Button>
       </form>
     </Form>
         </>
