@@ -95,7 +95,7 @@ const Register=()=>{
           </div>
           <div className='hidden md:flex  w-full   p-12 items-center justify-center relative'>
             
-            <div className='w-full h-full opacity-15 space-y-6 text-white bg-blue-50 z-10 absolute '>
+            <div className='w-full h-full opacity-10 space-y-6 text-white bg-blue-50 z-10 absolute '>
               <h2 className='text-4xl mt-72 text-black font-bold '>
                 Welcome to our Website.   
               </h2>
