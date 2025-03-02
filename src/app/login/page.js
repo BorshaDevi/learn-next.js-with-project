@@ -9,7 +9,8 @@ const Login=()=>{
           <div className='w-full md:w-1/2 flex items-center justify-center p-8 lg:p-12'>
           <div className='w-full max-w-md space-y-8 bg-white rounded-lg shadow-lg'>
             <div className='space-y-2 m-5'>
-            <h1 className="text-gray-900 text-3xl font-bold tracking-tight">Login</h1>
+            <h1 className="text-gray-900 text-3xl font-bold tracking-tight text-center">Login</h1>
+            <p className="text-center">Login and go to your destination</p>
             <LoginForm></LoginForm>
             <p className='p-2 text-center text-xl'>Create New  Account.
       <Link href='/register' className='font-bold hover:text-blue-500'>Register</Link>

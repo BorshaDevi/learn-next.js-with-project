@@ -9,7 +9,8 @@ const Register=()=>{
           <div className='w-full md:w-1/2 flex items-center justify-center p-8 lg:p-12'>
           <div className='w-full max-w-md space-y-8 bg-white rounded-lg shadow-lg'>
             <div className='space-y-2 m-5'>
-            <h1 className="text-gray-900 text-3xl font-bold tracking-tight">Register</h1>
+            <h1 className="text-gray-900 text-3xl font-bold tracking-tight text-center">Register</h1>
+            <p className="text-center">Create your Account</p>
            <RegisterForm></RegisterForm>
     <p className='p-2 text-center text-xl'>Already have  Account?
       <Link href='/login' className='font-bold hover:text-blue-500'>Log in</Link>
