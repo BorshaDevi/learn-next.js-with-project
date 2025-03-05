@@ -11,10 +11,19 @@ const formSchema=z.object({
 
 export async function registerActionForm(formData){
     const validation=formSchema.safeParse(
-        name:formData.get('name'),
+        {
+          name:formData.get('name'),
         email:formData.get('email'),
         password:formData.get('password'),
+        }
     )
+
+    if(!validation.success){
+      return {
+        error : validation.error.errors[0].message,
+        status:400
+    }}
+
     try{
 
     }catch(e){
