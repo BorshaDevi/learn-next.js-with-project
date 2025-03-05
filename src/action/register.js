@@ -12,7 +12,7 @@ const formSchema=z.object({
 export async function registerActionForm(formData){
     const validation=formSchema.safeParse(
         {
-          name:formData.get('name'),
+        name:formData.get('name'),
         email:formData.get('email'),
         password:formData.get('password'),
         }
@@ -22,9 +22,12 @@ export async function registerActionForm(formData){
       return {
         error : validation.error.errors[0].message,
         status:400
-    }}
+      }
+    }
+    const {name ,email ,password}=validation.data
 
     try{
+
 
     }catch(e){
         console.log(e ,'Registration Error')
