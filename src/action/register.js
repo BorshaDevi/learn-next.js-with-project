@@ -1,5 +1,5 @@
 'use server'
-import {z} from 'zod'
+import {z} from 'zod'..
 
 const formSchema=z.object({
   name:z.string().min(2 ,{message:'Name must be 2 characters'}),
