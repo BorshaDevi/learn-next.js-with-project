@@ -1,4 +1,6 @@
 'use server'
+import aj from '@/lib/arcjet'
+import { request } from '@arcjet/next'
 import {z} from 'zod'
 
 const formSchema=z.object({
@@ -27,6 +29,10 @@ export async function registerActionForm(formData){
     const {name ,email ,password}=validation.data
 
     try{
+  const  req= await request()
+  const decision= aj.protect (req , {
+    email
+  })
 
 
     }catch(e){
