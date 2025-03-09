@@ -35,7 +35,17 @@ const RegisterForm=()=>{
         }
       })
       function onSubmit(values){
-        console.log(values)
+        
+        setLoading(true)
+        try{
+          console.log(values)
+
+        }catch (e){
+          console.log(e)
+
+        }finally{
+          setLoading(false)
+        }
       }
     return(
         <>
