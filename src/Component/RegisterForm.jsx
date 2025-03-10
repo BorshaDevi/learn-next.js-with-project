@@ -1,5 +1,5 @@
 'use client'
-import {z} from 'zod'
+import {object, z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {Button} from '@/components/ui/button'
@@ -39,6 +39,12 @@ const RegisterForm=()=>{
         setLoading(true)
         try{
           console.log(values)
+          const datas=object.keys(values)
+          forEach((key) => FormData.append(key , values[key])){
+            
+          }
+            
+          });
 
         }catch (e){
           console.log(e)
