@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
+import { registerActionForm } from '@/action/register'
 
 
 
@@ -34,17 +35,14 @@ const RegisterForm=()=>{
         
         }
       })
-      function onSubmit(values){
-        
+      async function onSubmit(values){
         setLoading(true)
         try{
           console.log(values)
-          const datas=object.keys(values)
-          forEach((key) => FormData.append(key , values[key])){
-            
-          }
-            
-          });
+          const formData=new FormData()
+          Object.keys(values).forEach((value)=> formData.append(value , values[value]))
+          const result =await registerActionForm(formData)
+          console.log(result)
 
         }catch (e){
           console.log(e)
