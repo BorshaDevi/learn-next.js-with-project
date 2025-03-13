@@ -33,7 +33,7 @@ export async function registerActionForm(formData){
   const decision= await aj.protect (req , {
     email
   })
-  console.log(decision , "Decision Data is here.")
+  // console.log(decision , "Decision Data is here.")
 
 
     }catch(e){
