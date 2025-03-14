@@ -34,6 +34,16 @@ export async function registerActionForm(formData){
     email
   })
   // console.log(decision , "Decision Data is here.")
+  if(decision.isDenied()){
+    if(decision.reason.isEmail()){
+      const emailTypes=decision.reason.emailTypes
+      if(emailTypes.includes('DISPOSABLE')){
+        return{
+          
+        }
+      }
+    }
+  }
 
 
     }catch(e){
