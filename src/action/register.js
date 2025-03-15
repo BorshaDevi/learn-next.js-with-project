@@ -19,6 +19,7 @@ export async function registerActionForm(formData){
         password:formData.get('password'),
         }
     )
+    
 
     if(!validation.success){
       return {
@@ -33,17 +34,23 @@ export async function registerActionForm(formData){
   const decision= await aj.protect (req , {
     email
   })
-  // console.log(decision , "Decision Data is here.")
+  console.log(decision , "Decision Data is here.")
   if(decision.isDenied()){
     if(decision.reason.isEmail()){
-      const emailTypes=decision.reason.emailTypes
+      const emailTypes=decision.reason.emailTypes;
       if(emailTypes.includes('DISPOSABLE')){
+        return{
+          error :'Disposable email addresses are not allowed',
+          status:403,
+        }
+      }else if(emailTypes.includes('NO_MX_RECORDS')){
         return{
           
         }
       }
     }
   }
+  
 
 
     }catch(e){
