@@ -71,10 +71,12 @@ export async function registerActionForm(formData){
         status:429,
       }
     }
+  }else{
+    return {
+      error:'Registration denied',
+      status:403,
+    }
   }
-  
-
-
     }catch(e){
         console.log(e ,'Registration Error')
         return{
