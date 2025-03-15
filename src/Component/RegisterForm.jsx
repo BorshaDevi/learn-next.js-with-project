@@ -44,6 +44,8 @@ const RegisterForm=()=>{
           const result =await registerActionForm(formData)
           console.log(result)
 
+
+          
         }catch (e){
           console.log(e)
 
