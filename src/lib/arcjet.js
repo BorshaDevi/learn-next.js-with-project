@@ -15,7 +15,7 @@ const aj=arcjet({
             rateLimit:{
                 mode:'LIVE',
                 interval:'10m',
-                max:20,
+                max:40,
             }
 
         })

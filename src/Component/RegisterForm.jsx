@@ -3,6 +3,7 @@ import {object, z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {Button} from '@/components/ui/button'
+import { ToastContainer, toast } from 'react-toastify';
 import {
   Form,
   FormControl,
@@ -38,16 +39,32 @@ const RegisterForm=()=>{
       async function onSubmit(values){
         setLoading(true)
         try{
-          console.log(values)
           const formData=new FormData()
           Object.keys(values).forEach((value)=> formData.append(value , values[value]))
           const result =await registerActionForm(formData)
-          console.log(result)
+          console.log(result, 'result is here.')
+          if(result.success){
+
+          }else{
+           throw new Error (result.error || 'Something want wrong!')
+          }
 
 
-          
+
         }catch (e){
           console.log(e)
+          toast('Registration failed',{
+            position: "top-left",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+
+            
+            })
 
         }finally{
           setLoading(false)
@@ -100,6 +117,20 @@ const RegisterForm=()=>{
         <Button type="submit" className='w-full font-bold '>Register</Button>
       </form>
     </Form>
+    <ToastContainer 
+  position="top-left"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick={false}
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+  
+   
+    />
         </>
     )
 }

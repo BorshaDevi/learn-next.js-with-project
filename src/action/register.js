@@ -34,7 +34,6 @@ export async function registerActionForm(formData){
   const decision= await aj.protect (req , {
     email
   })
-  console.log(decision , "Decision Data is here.")
   if(decision.isDenied()){
     if(decision.reason.isEmail()){
       const emailTypes=decision.reason.emailTypes;
