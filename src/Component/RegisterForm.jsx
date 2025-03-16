@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 import { registerActionForm } from '@/action/register'
+import { useRouter } from 'next/navigation'
 
 
 
@@ -28,6 +29,7 @@ const formSchema=z.object({
 })
 const RegisterForm=()=>{
     const [isLoading , setLoading]=useState(false)
+    const router=useRouter()
     const form=useForm({
         resolver:zodResolver(formSchema),
         defaultValues:{
@@ -45,6 +47,17 @@ const RegisterForm=()=>{
           const result =await registerActionForm(formData)
           console.log(result, 'result is here.')
           if(result.success){
+            toast('Registration Successful',{
+              position: "top-left",
+              autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+})
+router.push('/login')
 
           }else{
            throw new Error (result.error || 'Something want wrong!')
