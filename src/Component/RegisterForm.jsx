@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 import { registerActionForm } from '@/action/register'
-import connectDatabase from '@/lib/Database'
+
 
 
 
@@ -49,8 +49,7 @@ const RegisterForm=()=>{
           }else{
            throw new Error (result.error || 'Something want wrong!')
           }
-          await connectDatabase()
-          const existedUser=await User.findOne()
+          
 
 
 

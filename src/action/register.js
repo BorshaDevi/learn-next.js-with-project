@@ -1,7 +1,10 @@
 'use server'
 import aj from '@/lib/arcjet'
+import connectDatabase from '@/lib/Database'
 import { request } from '@arcjet/next'
+import { toast, ToastContainer } from 'react-toastify'
 import {z} from 'zod'
+import bcrypt from "bcryptjs";
 
 const formSchema=z.object({
   name:z.string().min(2 ,{message:'Name must be 2 characters'}),
@@ -75,6 +78,15 @@ export async function registerActionForm(formData){
       error:'Registration denied',
       status:403,
     }
+
+    //database connection
+    await connectDatabase()
+    const existingUser= await User.findOne({email})
+    if(existingUser){
+      return toast('User Already Existed')
+    }
+    const password=bcrypt.hashSync(password ,10)
+
   }
     }catch(e){
         console.log(e ,'Registration Error')
@@ -85,3 +97,4 @@ export async function registerActionForm(formData){
     }
 
 }
+<ToastContainer/>
