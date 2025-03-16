@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 import { registerActionForm } from '@/action/register'
+import connectDatabase from '@/lib/Database'
 
 
 
@@ -48,14 +49,13 @@ const RegisterForm=()=>{
           }else{
            throw new Error (result.error || 'Something want wrong!')
           }
-
+         await connectDatabase()
 
 
         }catch (e){
-          console.log(e)
           toast('Registration failed',{
             position: "top-left",
-autoClose: 5000,
+            autoClose: 5000,
 hideProgressBar: false,
 closeOnClick: false,
 pauseOnHover: true,
