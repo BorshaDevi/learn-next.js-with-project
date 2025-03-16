@@ -49,7 +49,9 @@ const RegisterForm=()=>{
           }else{
            throw new Error (result.error || 'Something want wrong!')
           }
-         await connectDatabase()
+          await connectDatabase()
+          const existedUser=await User.findOne()
+
 
 
         }catch (e){
