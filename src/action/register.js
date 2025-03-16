@@ -78,16 +78,14 @@ export async function registerActionForm(formData){
       error:'Registration denied',
       status:403,
     }
-
-    //database connection
-    await connectDatabase()
-    const existingUser= await User.findOne({email})
-    if(existingUser){
-      return toast('User Already Existed')
-    }
-    const password=bcrypt.hashSync(password ,10)
-
   }
+   //database connection
+   await connectDatabase()
+   const existingUser= await User.findOne({email})
+   if(existingUser){
+     return toast('User Already Existed')
+   }
+   const password=bcrypt.hashSync(password ,10)
     }catch(e){
         console.log(e ,'Registration Error')
         return{
