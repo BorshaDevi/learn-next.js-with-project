@@ -1,4 +1,4 @@
-import arcjet, { protectSignup } from '@arcjet/next';
+import arcjet, { detectBot, protectSignup, shield, validateEmail } from '@arcjet/next';
 
 const aj=arcjet({
     key:process.env.ARCJET_KEY,
@@ -19,6 +19,26 @@ const aj=arcjet({
             }
 
         })
+    ]
+})
+
+
+export const ajLogin=arcjet({
+    key:process.env.ARCJET_KEY,
+    characteristics: ["ip.src"],
+    rules:[
+        validateEmail({
+            mode:'LIVE',
+            deny:['DISPOSABLE', 'INVALID', 'NO_MX_RECORDS']
+        }),
+        shield({
+            mode:'LIVE',
+        }),
+        detectBot({
+            mode:'LIVE',
+            allow:[],
+        })
+
     ]
 })
 export default aj;
