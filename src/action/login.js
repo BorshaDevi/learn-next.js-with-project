@@ -1,4 +1,6 @@
 'use server'
+import { ajLogin } from '@/lib/arcjet'
+import { request } from '@arcjet/next'
 import {z} from 'zod'
 
 
@@ -26,6 +28,25 @@ if(!validation.success){
   }
 }
 const {email , password} =validation.data
+try{
+const req= await request()
+const decision= await ajLogin.protect(req, {
+  email,
+})
+
+
+if(decision.isDenied()){
+  
+}
+
+
+}catch(e){
+  console.log(e ,'Registration Error')
+  return{
+      message:'Internal Server Error',
+      status:500,
+  }
+}
 
 
 
