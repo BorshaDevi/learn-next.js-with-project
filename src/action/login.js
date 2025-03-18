@@ -31,13 +31,48 @@ const {email , password} =validation.data
 try{
 const req= await request()
 const decision= await ajLogin.protect(req, {
-  email,
+  email:email,
 })
 
 
 if(decision.isDenied()){
-  
+  if(decision.reason.isEmail()){
+    const emailTypes=decision.reason.emailTypes;
+    if(emailTypes.includes('DISPOSABLE')){
+      return{
+        error :'Disposable email addresses are not allowed',
+        status:403,
+      }
+    }else if(emailTypes.includes("INVALID")){
+      return{
+        error :'Invalid email',
+        status:403,
+      }
+    }else if(emailTypes.includes('NO_MX_RECORDS')){
+      return{
+        error :'Email domain does not have valid MX record',
+        status:403,
+      }
+    }else{
+      return{
+        error :'Email address is not accepted. Please try again. ',
+        status:403,
+      }
+    }
+
+  }else if(decision.reason.isBot()){
+    return{
+      error:'Bot activity detected',
+      status : 403,
+    } 
+  }else if(decision.reason.isShield()){
+    return {
+      error: 'You are suspicious!',
+      status:403,
+    }
+  }
 }
+
 
 
 }catch(e){
