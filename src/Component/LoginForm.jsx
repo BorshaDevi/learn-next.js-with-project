@@ -1,5 +1,5 @@
 'use client'
-import {z} from 'zod'
+import {object, z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {Button} from '@/components/ui/button'
@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify';
+import { loginActionForm } from '@/action/login'
 
 
 
@@ -35,8 +36,46 @@ const LoginForm=()=>{
             
             }
           })
-          function onSubmit(values){
-            console.log(values)
+          async function onSubmit(values){
+            setLoading(true)
+            try{
+              console.log(values)
+            const formData=new FormData()
+            Object.keys(values).forEach(value => formData.append(value, values[value]))
+            const result =await loginActionForm(formData)
+            console.log(result , 'login result is here')
+            if(result.success){
+              toast('Login Successfully',{
+                            position: "top-left",
+                            autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              })
+
+            } else{
+              throw new Error (result.error || 'Something want wrong (L)!')
+              
+            }
+
+            }catch{
+               toast('Login failed',{
+                          position: "top-left",
+                          autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              })
+
+            }finally{
+              setLoading(false)
+            }
           }
     return(
         <>
@@ -71,7 +110,20 @@ const LoginForm=()=>{
         <Button type="submit" className='w-full font-bold'>Login</Button>
       </form>
     </Form>
-    <ToastContainer/>
+    <ToastContainer 
+  position="top-left"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick={false}
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="light"
+  
+   
+    />
         </>
     )
 }

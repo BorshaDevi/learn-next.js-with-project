@@ -55,7 +55,7 @@ const RegisterForm=()=>{
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
-  theme: "dark",
+  theme: "light",
 })
 router.push('/login')
 
@@ -75,7 +75,7 @@ closeOnClick: false,
 pauseOnHover: true,
 draggable: true,
 progress: undefined,
-theme: "dark",
+theme: "light",
 
             
             })
@@ -141,7 +141,7 @@ theme: "dark",
   pauseOnFocusLoss
   draggable
   pauseOnHover
-  theme="dark"
+  theme="light"
   
    
     />
