@@ -71,6 +71,12 @@ if(decision.isDenied()){
       status:403,
     }
   }
+  else if(decision.reason.isRateLimit()){
+    return {
+      error: 'Too many requests!Please try again later.',
+      status:403,
+    }
+  }
 }
 
 
