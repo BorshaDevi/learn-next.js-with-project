@@ -19,6 +19,7 @@ import { loginActionForm } from '@/action/login'
 
 
 
+
 const formSchema=z.object({
   email:z.string().email({message: 'Email is required'}),
   password:z.string().min(8 ,{
@@ -60,6 +61,7 @@ const LoginForm=()=>{
               throw new Error (result.error || 'Something want wrong (L)!')
               
             }
+           
 
             }catch{
                toast('Login is gone failed',{

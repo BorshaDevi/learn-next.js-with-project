@@ -1,5 +1,6 @@
 'use server'
 import { ajLogin } from '@/lib/arcjet'
+import connectDatabase from '@/lib/Database'
 import { request } from '@arcjet/next'
 import {z} from 'zod'
 
@@ -78,8 +79,10 @@ if(decision.isDenied()){
     }
   }
 }
-
-
+ //database 
+ await connectDatabase()
+ 
+            
 
 }catch(e){
   console.log(e ,'Registration Error')
