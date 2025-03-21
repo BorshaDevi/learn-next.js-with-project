@@ -1,6 +1,7 @@
 'use server'
 import { ajLogin } from '@/lib/arcjet'
 import connectDatabase from '@/lib/Database'
+import User from '@/Models/User'
 import { request } from '@arcjet/next'
 import {z} from 'zod'
 
@@ -81,6 +82,7 @@ if(decision.isDenied()){
 }
  //database 
  await connectDatabase()
+ const user= await User.findOne({email}).select('')
  
             
 
