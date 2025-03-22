@@ -83,6 +83,12 @@ if(decision.isDenied()){
  //database 
  await connectDatabase()
  const user= await User.findOne({email}).select('')
+ if(!user){
+  return {
+    error:'User not found!',
+    status:401
+  }
+ }
  
             
 
