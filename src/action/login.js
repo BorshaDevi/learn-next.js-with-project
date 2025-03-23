@@ -3,6 +3,7 @@ import { ajLogin } from '@/lib/arcjet'
 import connectDatabase from '@/lib/Database'
 import User from '@/Models/User'
 import { request } from '@arcjet/next'
+import { compareSync } from 'bcryptjs'
 import {z} from 'zod'
 
 
@@ -83,10 +84,17 @@ if(decision.isDenied()){
  //database 
  await connectDatabase()
  const user= await User.findOne({email}).select('')
+ const isMatch=await compareSync(password , user.password)
  if(!user){
   return {
     error:'User not found!',
     status:401
+  }
+ }
+ if(!isMatch){
+  return{
+    error :'Unauthorized',
+    status:401,
   }
  }
  
