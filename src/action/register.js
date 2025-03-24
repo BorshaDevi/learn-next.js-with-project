@@ -84,7 +84,7 @@ export async function registerActionForm(formData){
    if(existingUser){
      return toast('User Already Existed')
    }
-   const passwordHash=bcrypt.hashSync(password ,10)
+   const passwordHash= await bcrypt.hashSync(password ,10)
    const result= new User({
     name, email , password :passwordHash
    })
