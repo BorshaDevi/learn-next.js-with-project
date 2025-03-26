@@ -4,6 +4,7 @@ import connectDatabase from '@/lib/Database'
 import User from '@/Models/User'
 import { request } from '@arcjet/next'
 import bcrypt from 'bcryptjs'
+import { SignJWT } from 'jose'
 import {z} from 'zod'
 
 
@@ -99,7 +100,10 @@ if(decision.isDenied()){
   }
  }
   //token
-            
+        const token= await new SignJWT({
+          userId:user._id.toString(),
+          email:user.email
+        })    
 
 }catch(e){
   console.log(e ,'Registration Error')
