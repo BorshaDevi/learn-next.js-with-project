@@ -40,7 +40,6 @@ const LoginForm=()=>{
           async function onSubmit(values){
             setLoading(true)
             try{
-              console.log(values)
             const formData=new FormData()
             Object.keys(values).forEach(value => formData.append(value, values[value]))
             const result =await loginActionForm(formData)
@@ -56,7 +55,7 @@ const LoginForm=()=>{
                 progress: undefined,
                 theme: "light",
               })
-              
+
            router.push('/')
 
 
