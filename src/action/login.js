@@ -5,6 +5,7 @@ import User from '@/Models/User'
 import { request } from '@arcjet/next'
 import bcrypt from 'bcryptjs'
 import { SignJWT } from 'jose'
+import { cookies } from 'next/headers'
 import {z} from 'zod'
 
 
@@ -110,6 +111,13 @@ if(decision.isDenied()){
         .setIssuedAt()
         .setExpirationTime('10s')
         .sign(secret)
+        await cookies.set('token',token,{
+          maxAge:600,
+          httpOnly:true,
+          path:'/',
+          secure:false,
+          sameSite:'strict',
+        })
 
 }catch(e){
   console.log(e ,'Registration Error')
