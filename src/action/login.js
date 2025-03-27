@@ -100,10 +100,16 @@ if(decision.isDenied()){
   }
  }
   //token
+  const secret=new TextEncoder().encode(process.env.JWT_SECRET)
+  const alg='HS256'
         const token= await new SignJWT({
           userId:user._id.toString(),
           email:user.email
-        })    
+        })
+        .setProtectedHeader({alg})
+        .setIssuedAt()
+        .setExpirationTime('10s')
+        .sign(secret)
 
 }catch(e){
   console.log(e ,'Registration Error')
