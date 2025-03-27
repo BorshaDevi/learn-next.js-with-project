@@ -120,7 +120,10 @@ if(decision.isDenied()){
         })
 
 
-        
+        return {
+          success: "Login successful",
+          status: 200
+        }
 
 }catch(e){
   console.log(e ,'Registration Error')
@@ -129,7 +132,4 @@ if(decision.isDenied()){
       status:500,
   }
 }
-
-
-
 }
