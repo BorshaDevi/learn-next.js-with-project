@@ -56,6 +56,9 @@ const LoginForm=()=>{
                 progress: undefined,
                 theme: "light",
               })
+              
+           router.push('/')
+
 
             } else{
               throw new Error (result.error || 'Something want wrong (L)!')

@@ -85,7 +85,7 @@ if(decision.isDenied()){
 }
  //database 
  await connectDatabase()
- const user= await User.findOne({email}).select('')
+ const user= await User.findOne({email}).select('+password')
  if(!user){
    return {
      error:'User not found!',
@@ -109,10 +109,10 @@ if(decision.isDenied()){
         })
         .setProtectedHeader({alg})
         .setIssuedAt()
-        .setExpirationTime('10s')
+        .setExpirationTime('2h')
         .sign(secret)
-        await cookies.set('token',token,{
-          maxAge:600,
+        (await cookies()).set('token',token,{
+          maxAge:7200,
           httpOnly:true,
           path:'/',
           secure:false,
