@@ -5,9 +5,14 @@ import { jwtVerify } from "jose";
         return null;
     }
     try{
-        const {payload}=await jwtVerify(token , process.env.JWT_SECRET)
-
+        const {payload}=await jwtVerify(token , new TextEncoder().encode(process.env.JWT_SECRET))
+        console.log(payload , 'payload console log')
+        return{
+            userId:payload.userId,
+            email:payload.email,
+            userName:payload.userName,
+        }
     }catch(e){
-        console.log(e)
+        console.log(e ,'fetching token')
     }
 }

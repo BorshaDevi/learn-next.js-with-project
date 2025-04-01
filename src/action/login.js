@@ -105,7 +105,9 @@ if(decision.isDenied()){
   const alg='HS256'
         const token= await new SignJWT({
           userId:user._id.toString(),
-          email:user.email
+          email:user.email,
+          userName:user.name,
+
         })
         .setProtectedHeader({alg})
         .setIssuedAt()
