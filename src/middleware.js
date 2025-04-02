@@ -18,6 +18,6 @@ export async function middleware(request){
     const routes=['/']
     const routeMatcher=routes.some(router => request.nextUrl.pathname === router || request.nextUrl.pathname.startsWith('/'+ router))
     if(routeMatcher){
-
+        
     }
 }
