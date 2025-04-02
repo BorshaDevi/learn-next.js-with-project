@@ -12,6 +12,12 @@ export const config={
 const arcJetMiddleware= createMiddleware(aj)
 export async function middleware(request){
     const arcJetResponse=arcJetMiddleware(request)
-     const response=NextResponse.next()
+    const response=NextResponse.next()
     
+    //routes
+    const routes=['/']
+    const routeMatcher=routes.some(router => request.nextUrl.pathname === router || request.nextUrl.pathname.startsWith('/'+ router))
+    if(routeMatcher){
+
+    }
 }
