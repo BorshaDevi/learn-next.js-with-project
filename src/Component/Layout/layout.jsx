@@ -1,11 +1,14 @@
-const { default: Header } = require("./Header")
+import { cookies } from "next/headers";
+import Header from "./Header";
+import verifyAuth from "@/lib/auth";
 
-const CommonLayout=({children})=>{
-    const isAuth=false;
+
+const CommonLayout=async({children})=>{
+    const token=(await cookies()).get('token')?.value
+    const user=await verifyAuth(token)
     return (
         <div className="min-h-screen">
-        
-            {isAuth && <Header></Header> }
+        {user && <Header></Header> }
         {children}
         </div>
     )
