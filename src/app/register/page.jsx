@@ -1,8 +1,14 @@
 import RegisterForm from "@/Component/RegisterForm";
+import { cookies } from "next/headers";
 import Link from 'next/link'
+import { redirect } from "next/navigation";
 
 
-const Register=()=>{
+const Register=async ()=>{
+  const token=(await cookies()).get('token')?.value
+    if(token){
+      redirect('/')
+    }
     
     return(
         <div className='min-h-screen w-full flex flex-col md:flex-row bg-gradient-to-r from-gray-100 to-gray-200'>

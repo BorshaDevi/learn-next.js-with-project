@@ -14,9 +14,9 @@ export const config={
 const arcJetMiddleware= createMiddleware(aj)
 export async function middleware(request){
     const arcJetResponse= await arcJetMiddleware(request)
-    const response=NextResponse.next()
+    let response=NextResponse.next()
     
-    //routes
+    //protected routes
     const routes=['/']
     const routeMatcher=routes.some(router => request.nextUrl.pathname === router || request.nextUrl.pathname.startsWith(router + '/' ))
     if(routeMatcher){
@@ -26,7 +26,7 @@ export async function middleware(request){
             if(request.nextUrl.pathname !== '/login'){
                 const loginUrl= new URL('/login' ,  request.url);
                 loginUrl.searchParams.set('from' ,request.nextUrl.pathname )
-                return  NextResponse.redirect(loginUrl)
+                response = NextResponse.redirect(loginUrl)
             }
         }
 
