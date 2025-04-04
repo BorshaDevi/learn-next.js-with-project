@@ -113,6 +113,7 @@ if(decision.isDenied()){
         .setIssuedAt()
         .setExpirationTime('2h')
         .sign(secret)
+        
         await cookies().set('token',token,{
           maxAge:7200,
           httpOnly:true,
