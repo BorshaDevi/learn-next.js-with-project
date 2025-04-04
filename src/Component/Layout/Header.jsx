@@ -1,7 +1,7 @@
 const Header=()=>{
     return(
-          <div>
-
+          <div className="fixed max-w-7xl">
+          <p>header</p>
           </div>
     )
 }

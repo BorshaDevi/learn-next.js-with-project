@@ -1,9 +1,8 @@
 const  page=()=>{
   return(
-
-  <p>
-    main
-  </p>
+    <div>
+      
+    </div>
   )
 }
 export default page;
