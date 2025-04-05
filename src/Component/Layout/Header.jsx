@@ -18,12 +18,12 @@ const Header=()=>{
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="relative hidden md:block ">
+                    <CiSearch className="absolute mt-3"/>
                      <Input
                       type="text"
                      placeholder="Search blogs..."
-                     className="w-full h-10 px-4 py-2 border border-gray-100 bg-white rounded-md focus:outline-none focus:ring focus:border-yellow-200"
+                     className="w-full pl-10 pr-4  h-10 px-4 py-1 border border-gray-100 bg-white rounded-md focus:outline-none focus:ring focus:border-yellow-200"
                      />
-                     <CiSearch className=""/>
                   </div>
 
                 </div>
