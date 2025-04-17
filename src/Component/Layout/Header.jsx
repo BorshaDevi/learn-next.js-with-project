@@ -1,4 +1,5 @@
 'use client'
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
@@ -31,7 +32,9 @@ const Header=()=>{
                   </div>
                   
                    <MdEditNote onClick={()=> router.push('/blog/create')} className="text-2xl" />
-                  
+                  <DropdownMenu>
+                    <DropdownMenuTrigger></DropdownMenuTrigger>
+                  </DropdownMenu>
                 </div>
                </div>
             </div>
