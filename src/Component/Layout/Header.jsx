@@ -1,4 +1,5 @@
 'use client'
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
@@ -33,7 +34,11 @@ const Header=()=>{
                   
                    <MdEditNote onClick={()=> router.push('/blog/create')} className="text-2xl" />
                   <DropdownMenu>
-                    <DropdownMenuTrigger></DropdownMenuTrigger>
+                    <DropdownMenuTrigger>
+                      <Avatar>
+                        <AvatarFallback>M</AvatarFallback>
+                        </Avatar>
+                        </DropdownMenuTrigger>
                   </DropdownMenu>
                 </div>
                </div>
