@@ -16,7 +16,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify';
 import { loginActionForm } from '@/action/login'
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 
@@ -55,16 +55,10 @@ const LoginForm=()=>{
                 progress: undefined,
                 theme: "light",
               })
-
            router.push('/')
-
-
             } else{
               throw new Error (result.error || 'Something want wrong (L)!')
-              
             }
-           
-
             }catch{
                toast('Login is gone failed',{
                           position: "top-left",
@@ -111,7 +105,7 @@ const LoginForm=()=>{
             </FormItem>
           )}
         />
-        <Button type="submit" className='w-full font-bold'>Login</Button>
+        <Button type="submit" className='w-full font-bold'>{isLoading ?<span className='animate-spin'>< AiOutlineLoading3Quarters/></span>:<span>Login</span>}</Button>
       </form>
     </Form>
     <ToastContainer 
