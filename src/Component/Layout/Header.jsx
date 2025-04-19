@@ -1,6 +1,6 @@
 'use client'
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
@@ -35,10 +35,13 @@ const Header=()=>{
                    <MdEditNote onClick={()=> router.push('/blog/create')} className="text-2xl" />
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <Avatar>
-                        <AvatarFallback>M</AvatarFallback>
+                      <Avatar className="cursor-pointer w-10 h-10 bg-yellow-200 hover:bg-yellow-300 transition duration-300 ease-in-out">
+                        <AvatarFallback className="bg-white text-black">M</AvatarFallback>
                         </Avatar>
                         </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                          
+                        </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
                </div>
