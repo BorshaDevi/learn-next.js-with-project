@@ -1,6 +1,6 @@
 'use client'
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
@@ -40,7 +40,13 @@ const Header=()=>{
                         </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                          
+                          <DropdownMenuLabel className="text-center font-bold text-lg">Marg Ltd</DropdownMenuLabel>
+                          <DropdownMenuSeparator>
+                            <DropdownMenuItem>Lab kbd </DropdownMenuItem>
+                            <DropdownMenuItem>Lab kbd </DropdownMenuItem>
+                            <DropdownMenuItem>Lab kbd </DropdownMenuItem>
+                            <DropdownMenuItem>Lab kbd </DropdownMenuItem>
+                          </DropdownMenuSeparator>
                         </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
